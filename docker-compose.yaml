@@ -1,0 +1,22 @@
+services:
+  app-1:
+    build: ./app-1
+    container_name: app-1_c
+    networks:
+      - proxy
+  app-2:
+    build: ./app-2
+    container_name: app-2_c
+    networks:
+      - proxy
+  proxy:
+    build: ./proxy
+    container_name: proxy_c
+    ports:
+      - 80:80
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    driver: bridge
